@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum SVM - Credit Card Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <span class="quantum-icon">⚛️</span>
+                <span class="logo-text">Quantum SVM</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+                <li><a href="#quantum" class="nav-link" data-section="quantum">Quantum Properties</a></li>
+                <li><a href="#training" class="nav-link" data-section="training">Train Model</a></li>
+                <li><a href="#predict" class="nav-link" data-section="predict">Test Prediction</a></li>
+                <li><a href="#circuit" class="nav-link" data-section="circuit">Circuit Details</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h1>Quantum SVM for Fraud Detection</h1>
+                <p class="subtitle">Harness quantum computing to detect credit card fraud</p>
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <h3>284,807</h3>
+                        <p>Transactions</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>5</h3>
+                        <p>Qubits</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>30</h3>
+                        <p>Features</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>0.17%</h3>
+                        <p>Fraud Rate</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-content">
+                <h2>The Problem</h2>
+                <p>Credit card fraud causes billions in losses every year. Detecting it is a classification task—every transaction must be labeled as Fraud or Legitimate. With an imbalanced dataset where only 0.17% of transactions are fraudulent, traditional machine learning methods often fail.</p>
+
+                <h2>The Quantum Solution</h2>
+                <p>Our Quantum SVM uses a 5-qubit quantum circuit to compute a quantum kernel that captures non-linear patterns in high-dimensional data. By leveraging quantum superposition and entanglement, we can detect fraud patterns that classical methods might miss.</p>
+
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">🔐</div>
+                        <h3>Quantum Kernel</h3>
+                        <p>Leverages quantum superposition to compute complex kernels</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⚛️</div>
+                        <h3>5-Qubit Circuit</h3>
+                        <p>Optimized quantum circuit with 5 layers of gates</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📊</div>
+                        <h3>High Accuracy</h3>
+                        <p>Detects fraud patterns with quantum advantage</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Fast Inference</h3>
+                        <p>Real-time transaction classification</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quantum Properties Section -->
+        <section id="quantum" class="section">
+            <h2>Quantum Circuit Properties</h2>
+            <div class="properties-grid">
+                <div id="properties-container" class="properties-list">
+                    <div class="loading">Loading quantum properties...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Training Section -->
+        <section id="training" class="section">
+            <h2>Train the Quantum SVM</h2>
+            <div class="training-container">
+                <div class="training-controls">
+                    <div class="control-group">
+                        <label for="n-samples">Number of Samples:</label>
+                        <input type="number" id="n-samples" min="100" max="50000" value="5000" step="100">
+                    </div>
+                    <div class="control-group">
+                        <label for="use-quantum">Use Quantum Kernel:</label>
+                        <input type="checkbox" id="use-quantum">
+                    </div>
+                    <button id="train-btn" class="btn btn-primary">Train Model</button>
+                </div>
+
+                <div id="training-progress" class="hidden">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <p id="progress-text">Training...</p>
+                </div>
+
+                <div id="metrics-display" class="hidden metrics-display">
+                    <h3>Model Performance Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <h4>Accuracy</h4>
+                            <p id="metric-accuracy" class="metric-value">-</p>
+                        </div>
+                        <div class="metric">
+                            <h4>AUC-ROC</h4>
+                            <p id="metric-auc" class="metric-value">-</p>
+                        </div>
+                        <div class="metric">
+                            <h4>True Positives</h4>
+                            <p id="metric-tp" class="metric-value">-</p>
+                        </div>
+                        <div class="metric">
+                            <h4>False Positives</h4>
+                            <p id="metric-fp" class="metric-value">-</p>
+                        </div>
+                        <div class="metric">
+                            <h4>True Negatives</h4>
+                            <p id="metric-tn" class="metric-value">-</p>
+                        </div>
+                        <div class="metric">
+                            <h4>False Negatives</h4>
+                            <p id="metric-fn" class="metric-value">-</p>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="confusionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction Section -->
+        <section id="predict" class="section">
+            <h2>Test Fraud Prediction</h2>
+            <div class="prediction-container">
+                <div class="prediction-form">
+                    <h3>Enter Transaction Features</h3>
+                    <button id="random-btn" class="btn btn-secondary">Generate Random Transaction</button>
+                    <div id="features-input" class="features-grid">
+                        <!-- Will be populated dynamically -->
+                    </div>
+                    <button id="predict-btn" class="btn btn-primary">Predict</button>
+                </div>
+
+                <div id="prediction-result" class="hidden prediction-result">
+                    <div id="result-label" class="result-label"></div>
+                    <div id="result-probability" class="result-probability"></div>
+                    <div class="chart-container">
+                        <canvas id="probabilityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Circuit Details Section -->
+        <section id="circuit" class="section">
+            <h2>Quantum Circuit Architecture</h2>
+            <div class="circuit-info">
+                <div id="circuit-details" class="circuit-details">
+                    <div class="loading">Loading circuit details...</div>
+                </div>
+            </div>
+
+            <div class="circuit-visualization">
+                <h3>Circuit Layers</h3>
+                <div id="circuit-layers" class="layers-container">
+                    <!-- Layers will be populated here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Quantum SVM Fraud Detection | Powered by Qiskit & Quantum Computing</p>
+        <p>GitHub: <a href="https://github.com/Sesha06/Quantum_Project" target="_blank">Sesha06/Quantum_Project</a></p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
