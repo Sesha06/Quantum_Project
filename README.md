@@ -175,9 +175,19 @@ Contributions are welcome! Please feel free to submit issues or pull requests.
 
 This project is open source and available under the MIT License.
 
-## 👨‍💻 Author
+## 👨‍💻 Development Team
 
-**SESHAGIRI S** (@Sesha06)
+This project was developed by a team of passionate quantum computing and machine learning engineers at SRM Institute of Science and Technology:
+
+- **V ANBU CHELVAN** - Lead Developer & Quantum Computing Specialist
+- **SESHAGIRI S** (@Sesha06) - Quantum ML & Backend Engineer  
+- **DEEPSHIKA K** - Full Stack Developer & ML Engineer
+
+## 🏢 Institution
+
+**SRM Institute of Science and Technology**
+
+This project is part of the Quantum Computing and Machine Learning research initiatives at SRM College.
 
 ## 🔗 Links
 
